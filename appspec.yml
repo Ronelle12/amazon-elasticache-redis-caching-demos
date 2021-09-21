@@ -1,0 +1,25 @@
+version: 0.0
+os: linux
+# Appspec file for Node deployment
+files:
+ - source: /packages/experience-api
+   destination: /home/vodasure/Vodasure/experience-api
+ - source: /packages/domain-entities
+   destination: /home/vodasure/Vodasure/domain-entities
+ - source: /tsconfig.json
+   destination: /home/vodasure/Vodasure
+ - source: /packages/finrite-api
+   destination: /home/vodasure/Vodasure/finrite-api
+permissions:
+ - object: /home/vodasure/Vodasure
+   pattern: '**'
+   owner: vodasure
+hooks:
+ BeforeInstall:
+  - location: /scripts/before-install.sh
+    timeout: 100
+    runas: vodasure
+ AfterInstall:
+  - location: /scripts/after-install.sh
+    timeout: 600
+    runas: vodasure
