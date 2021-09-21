@@ -5,12 +5,3 @@ files:
  - source: SourceArtifact
    destination: /home/redis-app
 
-hooks:
- BeforeInstall:
-  - location: /scripts/before-install.sh
-    timeout: 100
-    runas: ec2-user
- AfterInstall:
-  - location: /scripts/after-install.sh
-    timeout: 600
-    runas: ec2-user
